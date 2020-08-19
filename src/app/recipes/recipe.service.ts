@@ -1,18 +1,16 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class RecipeService {
 
   constructor(private slService: ShoppingListService) {}
 
-  recipeSelected = new EventEmitter<Recipe>();
-
   private recipes: Recipe[] = [
     // tslint:disable-next-line:max-line-length
-    new Recipe('Buger', 'This is simply a test', 'https://image.shutterstock.com/image-photo/tasty-pork-buger-on-wooden-260nw-734784787.jpg',
+    new Recipe('Bugger', 'This is simply a test', 'https://image.shutterstock.com/image-photo/tasty-pork-buger-on-wooden-260nw-734784787.jpg',
       [
       new Ingredient('Meat', 1),
       new Ingredient('French Fries', 20)
