@@ -11,12 +11,13 @@ export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+    // tslint:disable-next-line:max-line-length
+    new Recipe('Buger', 'This is simply a test', 'https://image.shutterstock.com/image-photo/tasty-pork-buger-on-wooden-260nw-734784787.jpg',
       [
       new Ingredient('Meat', 1),
       new Ingredient('French Fries', 20)
     ]),
-    new Recipe('Another Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+    new Recipe('Beef Chops', 'This is simply a test', 'https://kfoods.com/images1/newrecipeicon/beef-chops_6052.jpg',
       [
         new Ingredient('Meat', 1),
         new Ingredient('Buns', 20)
@@ -27,7 +28,11 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]){
+  getRecipe(id: number) {
+    return this.recipes[id];
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
   }
 
