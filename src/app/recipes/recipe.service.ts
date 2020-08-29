@@ -1,6 +1,5 @@
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -12,8 +11,7 @@ export class RecipeService {
 
   recipesChanges = new Subject<Recipe[]>();
 
-  constructor(private slService: ShoppingListService,
-              private store: Store<fromShoppingList.AppState>) {}
+  constructor(private store: Store<fromShoppingList.AppState>) {}
 
   // private recipes: Recipe[] = [
     // tslint:disable-next-line:max-line-length
@@ -45,7 +43,6 @@ export class RecipeService {
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    // this.slService.addIngredients(ingredients);
     this.store.dispatch(new ShoppingListAction.AddIngredients(ingredients));
   }
 
