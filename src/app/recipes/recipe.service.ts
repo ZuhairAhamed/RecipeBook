@@ -4,14 +4,14 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as ShoppingListAction from '../shopping-list/store/shopping-list.action';
-import * as fromShoppingList from '../shopping-list/store/shopping-list.reducer';
+import * as fromApp from '../store/app.reducer';
 
 @Injectable()
 export class RecipeService {
 
   recipesChanges = new Subject<Recipe[]>();
 
-  constructor(private store: Store<fromShoppingList.AppState>) {}
+  constructor(private store: Store<fromApp.AppState>) {}
 
   // private recipes: Recipe[] = [
     // tslint:disable-next-line:max-line-length
