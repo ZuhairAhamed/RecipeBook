@@ -30,7 +30,7 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  login(email: string, password: string){
+  login(email: string, password: string) {
     return this.http.post<AuthResponseData>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.fireBaseAPIkey,
       {
