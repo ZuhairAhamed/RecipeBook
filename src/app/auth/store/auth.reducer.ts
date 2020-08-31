@@ -12,7 +12,7 @@ const initialState: State = {
 
 export function authReducer(state = initialState, action: AuthActions.AuthActions) {
   switch (action.type) {
-    case 'LOGIN':
+    case '[Auth] LOGIN':
       const user = new UserModel(
         action.payLoad.email,
         action.payLoad.userId,
@@ -23,7 +23,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         ...state,
         user: user
       };
-    case 'LOGOUT':
+    case '[Auth] LOGOUT':
       return {
         ...state,
         user: null
