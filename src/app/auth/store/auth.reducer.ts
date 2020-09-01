@@ -16,7 +16,7 @@ const initialState: State = {
 
 export function authReducer(state = initialState, action: AuthActions.AuthActions) {
   switch (action.type) {
-    case '[Auth] LOGIN':
+    case AuthActions.AUTHENTICATE_SUCCESS:
       const user = new UserModel(
         action.payLoad.email,
         action.payLoad.userId,
@@ -29,23 +29,29 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         user: user,
         loading: false
       };
-    case '[Auth] LOGOUT':
+    case AuthActions.LOGOUT:
       return {
         ...state,
         user: null
       };
     case AuthActions.LOGIN_START:
+    case AuthActions.SIGNUP_START:
       return {
         ...state,
         authError: null,
         loading: true
       };
-    case AuthActions.LOGIN_FAIL:
+    case AuthActions.AUTHENTICATE_FAIL:
       return {
       ...state,
         user: null,
         authError: action.payLoad,
         loading: false
+      };
+    case AuthActions.CLEAR_ERROR:
+      return {
+        ...state,
+        authError: null
       };
     default:
       return state;
